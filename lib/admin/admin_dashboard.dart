@@ -17,15 +17,20 @@ class _AdminDashboardState extends State<AdminDashboard> {
       appBar: AppBar(
         title: const Text("Admin Dashboard "),
       ),
-      body: ListView.builder(itemBuilder: (context, index) {
-        return Card(
-          child: ListTile(
-            leading: Icon(Icons.question_answer),
-            title: const Text("Title"),
-            subtitle: Text("Subtitle"),
-            trailing: IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
-          ),
-        );
+      body: GetBuilder<QuestionController>(builder: (controller) {
+        return ListView.builder(
+            itemCount: controller.savedCategories.length,
+            itemBuilder: (context, index) {
+              return Card(
+                child: ListTile(
+                  leading: Icon(Icons.question_answer),
+                  title: Text(controller.savedCategories[index]),
+                  subtitle: Text(controller.savedSubtitles[index]),
+                  trailing:
+                      IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                ),
+              );
+            });
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: _showDialogBox,

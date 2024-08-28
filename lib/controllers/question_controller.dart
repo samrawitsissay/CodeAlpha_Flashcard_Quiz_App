@@ -25,4 +25,14 @@ class QuestionController extends GetxController {
     categoryTitleController.clear();
     Get.snackbar("Saved", "Category created successfully");
   }
+
+  void loadQuestionCategoryFromSharedPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    final catagories = prefs.getStringList(_categorykey) ?? [];
+    final subtitles = prefs.getStringList(_subtitlekey) ?? [];
+
+    savedCategories.assignAll(catagories);
+    savedSubtitles.assignAll(subtitles);
+    update();
+  }
 }
