@@ -1,9 +1,12 @@
 import 'dart:ui';
 
+import 'package:flashcard_quiz_app/controllers/question_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class QuizCategory extends StatelessWidget {
-  const QuizCategory({super.key});
+  QuizCategory({super.key});
+  final QuestionController _questionController = Get.put(QuestionController());
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +26,17 @@ class QuizCategory extends StatelessWidget {
           GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2),
-              itemCount: 50,
+              itemCount: _questionController.savedCategories.length,
               itemBuilder: (context, index) {
                 return Card(
                     child: GestureDetector(
                   onTap: () {},
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.question_answer),
-                      Text('Quiz Title'),
-                      Text("Quiz Subtitle")
+                      const Icon(Icons.question_answer),
+                      Text(_questionController.savedCategories[index]),
+                      Text(_questionController.savedSubtitles[index])
                     ],
                   ),
                 ));
