@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flashcard_quiz_app/controllers/question_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,8 +12,14 @@ class AdminDashboard extends StatefulWidget {
 }
 
 class _AdminDashboardState extends State<AdminDashboard> {
-  @override
   final QuestionController questionController = Get.put(QuestionController());
+  @override
+  Void initState() {
+    questionController.loadQuestionCategoryFromSharedPreferences();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
