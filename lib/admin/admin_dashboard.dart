@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flashcard_quiz_app/controllers/question_controller.dart';
+import 'package:flashcard_quiz_app/pages/admin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,7 @@ class AdminDashboard extends StatefulWidget {
 class _AdminDashboardState extends State<AdminDashboard> {
   final QuestionController questionController = Get.put(QuestionController());
   @override
-  Void initState() {
+  void initState() {
     questionController.loadQuestionCategoryFromSharedPreferences();
     super.initState();
   }
@@ -31,6 +32,10 @@ class _AdminDashboardState extends State<AdminDashboard> {
             itemBuilder: (context, index) {
               return Card(
                 child: ListTile(
+                  onTap: () {
+                    Get.to(AdminPage(
+                        quizCategory: controller.savedCategories[index]));
+                  },
                   leading: Icon(Icons.question_answer),
                   title: Text(controller.savedCategories[index]),
                   subtitle: Text(controller.savedSubtitles[index]),
