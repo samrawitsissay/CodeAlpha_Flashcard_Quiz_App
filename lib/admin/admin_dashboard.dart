@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flashcard_quiz_app/controllers/question_controller.dart';
 import 'package:flashcard_quiz_app/pages/admin_page.dart';
@@ -36,11 +35,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
                     Get.to(AdminPage(
                         quizCategory: controller.savedCategories[index]));
                   },
-                  leading: Icon(Icons.question_answer),
+                  leading: const Icon(Icons.question_answer),
                   title: Text(controller.savedCategories[index]),
                   subtitle: Text(controller.savedSubtitles[index]),
                   trailing:
-                      IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                      IconButton(onPressed: () {}, icon: const Icon(Icons.delete)),
                 ),
               );
             });
@@ -56,17 +55,17 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
   _showDialogBox() {
     Get.defaultDialog(
-        titlePadding: EdgeInsets.only(top: 15),
-        contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+        titlePadding: const EdgeInsets.only(top: 15),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
         title: "Add Quiz",
         content: Column(
           children: [
             TextFormField(
-              decoration: InputDecoration(hintText: "Enter the category name"),
+              decoration: const InputDecoration(hintText: "Enter the category name"),
             ),
             TextFormField(
               decoration:
-                  InputDecoration(hintText: "Enter the category subtitle"),
+                  const InputDecoration(hintText: "Enter the category subtitle"),
             )
           ],
         ),

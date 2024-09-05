@@ -13,14 +13,14 @@ class AdminPage extends StatelessWidget {
       body: Column(
         children: [
           TextFormField(
-            decoration: InputDecoration(labelText: "Question"),
+            decoration: const InputDecoration(labelText: "Question"),
           ),
           for (var i = 0; i < 4; i++)
             TextFormField(
               decoration: InputDecoration(labelText: "Options ${i + 1}"),
             ),
           TextFormField(
-            decoration: InputDecoration(labelText: "Correct Answers (0-3)"),
+            decoration: const InputDecoration(labelText: "Correct Answers (0-3)"),
           ),
         ],
       ),

@@ -81,7 +81,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => AdminDashboard());
+                    Get.to(() => const AdminDashboard());
                   },
                   child: Container(
                     width: double.infinity,
